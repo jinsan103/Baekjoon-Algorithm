@@ -1,0 +1,36 @@
+
+/*
+문제
+M이상 N이하의 소수를 모두 출력하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 자연수 M과 N이 빈 칸을 사이에 두고 주어진다. (1 ≤ M ≤ N ≤ 1,000,000)
+
+출력
+한 줄에 하나씩, 증가하는 순서대로 소수를 출력한다.
+*/
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		ArrayList<Integer> arr = new ArrayList<>();
+		outerLoop : for(int i=2;i<=b;i++) {
+			for(int j=2;j*j<=i;j++) {//범위 내의 소수를 구하는 제일 빠른 
+				if(i%j==0) {
+					continue outerLoop;
+				}
+			}
+			arr.add(i);
+		}
+		for(int i=0;i<arr.size();i++) {
+			if(arr.get(i)>=a)
+				System.out.println(arr.get(i));
+		}
+	}
+}
